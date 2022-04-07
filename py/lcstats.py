@@ -7,18 +7,13 @@ import json
 import AppKit
 
 def get():
-    client = requests.get("https://leetcode-stats-api.herokuapp.com/donisidro323")
+    call_endpoint = "https://leetcode-stats-api.herokuapp.com/" + os.getenv('LCUSERNAME')
+    client = requests.get(call_endpoint)
     return client.text
 
 
 def parse(jsonpayload, field):
     json_obj = json.loads(jsonpayload)
-    # os.environ["totalSolved"] = str(json_obj['totalSolved'])
-    # os.environ["easySolved"] = json_obj["easySolved"]
-    # os.environ["mediumSolved"] = json_obj["mediumSolved"]
-    # os.environ["hardSolved"] = json_obj["hardSolved"]
-    # os.environ["acceptanceRate"] = json_obj["acceptanceRate"]
-    # os.environ["ranking"] = json_obj["ranking"]
     return json_obj[field]
 
 def main():    
