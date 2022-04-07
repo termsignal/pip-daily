@@ -1,0 +1,4 @@
+dataclasses
+requests
+json
+AppKit
